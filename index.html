@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Money</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- App Header -->
+        <header class="app-header">
+            <div>
+                <h1>My Money</h1>
+                <p>Money Tracker</p>
+            </div>
+
+            <button class="menu-btn" id="menuBtn">⋮</button>
+        </header>
+
+
+        <main id="mainContent">
+
+            <!-- Home Page -->
+
+            <div id="homePage">
+
+                <!-- Balance -->
+                <section class="balance-box">
+
+                    <p class="balance-label">Available Balance</p>
+
+                    <h2 id="balance">₹0</h2>
+
+                    <p class="balance-status" id="balanceStatus">
+                        Your current balance
+                    </p>
+
+                </section>
+
+
+                <!-- Quick Actions -->
+                <section class="actions">
+
+                    <button class="action-btn add-money-btn" id="addMoneyBtn">
+                        <span>＋</span>
+                        <small>Add Money</small>
+                    </button>
+
+                    <button class="action-btn expense-btn" id="addExpenseBtn">
+                        <span>−</span>
+                        <small>Expense</small>
+                    </button>
+
+                </section>
+
+
+                <!-- Add Money Form -->
+                <section class="form-box" id="moneyForm">
+
+                    <h3>Add Money</h3>
+
+                    <input
+                        type="number"
+                        id="moneyInput"
+                        placeholder="Enter amount"
+                        min="0"
+                    >
+
+                    <button class="main-btn" id="saveMoneyBtn">
+                        Add Money
+                    </button>
+
+                </section>
+
+
+                <!-- Expense Form -->
+                <section class="form-box" id="expenseForm">
+
+                    <h3>Add Expense</h3>
+
+                    <input
+                        type="number"
+                        id="expenseInput"
+                        placeholder="Enter amount"
+                        min="0"
+                    >
+
+                    <input
+                        type="text"
+                        id="descriptionInput"
+                        placeholder="What did you spend on?"
+                    >
+
+                    <button class="main-btn" id="saveExpenseBtn">
+                        Add Expense
+                    </button>
+
+                </section>
+
+
+                <!-- Recent Transactions -->
+                <section class="history">
+
+                    <div class="section-title">
+                        <h3>Recent Transactions</h3>
+                    </div>
+
+                    <div id="transactionList"></div>
+
+                </section>
+
+            </div>
+
+
+            <!-- Full History Page -->
+
+            <div id="historyPage" class="page hidden">
+
+                <div class="page-header">
+                    <button class="back-btn" id="historyBackBtn">←</button>
+
+                    <h2>Transaction History</h2>
+                </div>
+
+                <div id="fullTransactionList"></div>
+
+                <button class="danger-btn" id="clearHistoryBtn">
+                    Clear All History
+                </button>
+
+                <button class="reset-btn" id="resetBalanceBtn">
+                    Reset Balance
+                </button>
+
+            </div>
+
+
+            <!-- Settings Page -->
+
+            <div id="settingsPage" class="page hidden">
+
+                <div class="page-header">
+                    <button class="back-btn" id="settingsBackBtn">←</button>
+
+                    <h2>Settings</h2>
+                </div>
+
+
+                <!-- General Settings -->
+
+                <section class="settings-section">
+
+                    <h3>General</h3>
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>Currency</strong>
+                            <small>Select your currency</small>
+                        </div>
+
+                        <select id="currencySelect">
+                            <option value="₹">₹ INR</option>
+                            <option value="$">$ USD</option>
+                            <option value="€">€ EUR</option>
+                            <option value="£">£ GBP</option>
+                            <option value="₨">₨ NPR</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>Delete Confirmation</strong>
+                            <small>Ask before deleting transactions</small>
+                        </div>
+
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                id="deleteConfirmToggle"
+                                checked
+                            >
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Theme Settings -->
+
+                <section class="settings-section">
+
+                    <h3>Theme</h3>
+
+                    <div class="theme-options">
+
+                        <button class="theme-btn" data-theme="light">
+                            ☀️
+                            <span>Light</span>
+                        </button>
+
+                        <button class="theme-btn" data-theme="dark">
+                            🌙
+                            <span>Dark</span>
+                        </button>
+
+                        <button class="theme-btn" data-theme="system">
+                            ⚙️
+                            <span>System</span>
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- App Settings -->
+
+                <section class="settings-section">
+
+                    <h3>App</h3>
+
+                    <button class="settings-action" id="resetAppBtn">
+                        <span>Reset App Data</span>
+                        <small>Delete balance and all transactions</small>
+                    </button>
+
+                </section>
+
+            </div>
+
+        </main>
+
+
+        <!-- Bottom Navigation -->
+
+        <nav class="bottom-nav">
+
+            <button class="nav-item active" id="homeNavBtn">
+                <span>⌂</span>
+                <small>Home</small>
+            </button>
+
+            <button class="nav-item" id="historyNavBtn">
+                <span>↕</span>
+                <small>History</small>
+            </button>
+
+            <button class="nav-item" id="settingsNavBtn">
+                <span>⚙</span>
+                <small>Settings</small>
+            </button>
+
+        </nav>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
